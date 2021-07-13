@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sun Jun 13 19:03:15 2021
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : cs701_irp
+Top-level Entity Name : cecil_dp_asp
+Family : Cyclone V
+Device : 5CGXFC7C7F23C8
+Timing Models : Final
+Logic utilization (in ALMs) : 551 / 56,480 ( < 1 % )
+Total registers : 364
+Total pins : 91 / 268 ( 34 % )
+Total virtual pins : 0
+Total block memory bits : 16,384 / 7,024,640 ( < 1 % )
+Total RAM Blocks : 2 / 686 ( < 1 % )
+Total DSP Blocks : 1 / 156 ( < 1 % )
+Total HSSI RX PCSs : 0 / 6 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 6 ( 0 % )
+Total HSSI TX PCSs : 0 / 6 ( 0 % )
+Total HSSI PMA TX Serializers : 0 / 6 ( 0 % )
+Total PLLs : 0 / 13 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

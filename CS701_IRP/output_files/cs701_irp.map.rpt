@@ -1,0 +1,796 @@
+Analysis & Synthesis report for cs701_irp
+Sun Jun 13 19:02:09 2021
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. State Machine - |cecil_dp_asp|mac_state
+ 11. State Machine - |cecil_dp_asp|dpasp_state
+ 12. State Machine - |cecil_dp_asp|\fsm:dpasp_next_state
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Registers Packed Into Inferred Megafunctions
+ 17. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 18. Source assignments for sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0|altsyncram_qla1:auto_generated
+ 19. Source assignments for sync_ram:\mem_gen:0:memX|altsyncram:ram_rtl_0|altsyncram_qla1:auto_generated
+ 20. Parameter Settings for User Entity Instance: Top-level Entity: |cecil_dp_asp
+ 21. Parameter Settings for Inferred Entity Instance: sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0
+ 22. Parameter Settings for Inferred Entity Instance: sync_ram:\mem_gen:0:memX|altsyncram:ram_rtl_0
+ 23. altsyncram Parameter Settings by Entity Instance
+ 24. Port Connectivity Checks: "mac:mac1"
+ 25. Post-Synthesis Netlist Statistics for Top Partition
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sun Jun 13 19:02:09 2021       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; cs701_irp                                   ;
+; Top-level Entity Name           ; cecil_dp_asp                                ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 324                                         ;
+; Total pins                      ; 91                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 16,384                                      ;
+; Total DSP Blocks                ; 1                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; cecil_dp_asp       ; cs701_irp          ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                     ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; TdmaMinTypes.vhd                 ; yes             ; User VHDL File               ; C:/Users/symes/University/CS701_IRP/TdmaMinTypes.vhd                         ;         ;
+; sync_ram.vhd                     ; yes             ; User VHDL File               ; C:/Users/symes/University/CS701_IRP/sync_ram.vhd                             ;         ;
+; mac.vhd                          ; yes             ; User VHDL File               ; C:/Users/symes/University/CS701_IRP/mac.vhd                                  ;         ;
+; cecil_dp_asp.vhd                 ; yes             ; User VHDL File               ; C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd                         ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_qla1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/symes/University/CS701_IRP/db/altsyncram_qla1.tdf                   ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 552       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 814       ;
+;     -- 7 input functions                    ; 44        ;
+;     -- 6 input functions                    ; 220       ;
+;     -- 5 input functions                    ; 40        ;
+;     -- 4 input functions                    ; 108       ;
+;     -- <=3 input functions                  ; 402       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 324       ;
+;                                             ;           ;
+; I/O pins                                    ; 91        ;
+; Total MLAB memory bits                      ; 0         ;
+; Total block memory bits                     ; 16384     ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 1         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 324       ;
+; Total fan-out                               ; 5167      ;
+; Average fan-out                             ; 3.82      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                              ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                        ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+-----------------+--------------+
+; |cecil_dp_asp                             ; 814 (813)           ; 324 (292)                 ; 16384             ; 1          ; 91   ; 0            ; |cecil_dp_asp                                                                              ; cecil_dp_asp    ; work         ;
+;    |mac:mac1|                             ; 1 (1)               ; 32 (32)                   ; 0                 ; 1          ; 0    ; 0            ; |cecil_dp_asp|mac:mac1                                                                     ; mac             ; work         ;
+;    |sync_ram:\mem_gen:0:memX|             ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |cecil_dp_asp|sync_ram:\mem_gen:0:memX                                                     ; sync_ram        ; work         ;
+;       |altsyncram:ram_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |cecil_dp_asp|sync_ram:\mem_gen:0:memX|altsyncram:ram_rtl_0                                ; altsyncram      ; work         ;
+;          |altsyncram_qla1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |cecil_dp_asp|sync_ram:\mem_gen:0:memX|altsyncram:ram_rtl_0|altsyncram_qla1:auto_generated ; altsyncram_qla1 ; work         ;
+;    |sync_ram:\mem_gen:1:memX|             ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |cecil_dp_asp|sync_ram:\mem_gen:1:memX                                                     ; sync_ram        ; work         ;
+;       |altsyncram:ram_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |cecil_dp_asp|sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0                                ; altsyncram      ; work         ;
+;          |altsyncram_qla1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 8192              ; 0          ; 0    ; 0            ; |cecil_dp_asp|sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0|altsyncram_qla1:auto_generated ; altsyncram_qla1 ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                       ;
++-----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                    ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------+
+; sync_ram:\mem_gen:0:memX|altsyncram:ram_rtl_0|altsyncram_qla1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 512          ; 16           ; --           ; --           ; 8192 ; None ;
+; sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0|altsyncram_qla1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 512          ; 16           ; --           ; --           ; 8192 ; None ;
++-----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------+
+
+
++----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary ;
++-------------------------------+--------------+
+; Statistic                     ; Number Used  ;
++-------------------------------+--------------+
+; Independent 18x18 plus 36     ; 1            ;
+; Total number of DSP blocks    ; 1            ;
+;                               ;              ;
+; Fixed Point Signed Multiplier ; 1            ;
++-------------------------------+--------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |cecil_dp_asp|mac_state                                                                                                               ;
++---------------------+---------------------+--------------------+--------------------+---------------------+---------------------+---------------------+
+; Name                ; mac_state.mac_store ; mac_state.mac_calc ; mac_state.mac_wait ; mac_state.mac_fetch ; mac_state.mac_reset ; mac_state.mac_ready ;
++---------------------+---------------------+--------------------+--------------------+---------------------+---------------------+---------------------+
+; mac_state.mac_ready ; 0                   ; 0                  ; 0                  ; 0                   ; 0                   ; 0                   ;
+; mac_state.mac_reset ; 0                   ; 0                  ; 0                  ; 0                   ; 1                   ; 1                   ;
+; mac_state.mac_fetch ; 0                   ; 0                  ; 0                  ; 1                   ; 0                   ; 1                   ;
+; mac_state.mac_wait  ; 0                   ; 0                  ; 1                  ; 0                   ; 0                   ; 1                   ;
+; mac_state.mac_calc  ; 0                   ; 1                  ; 0                  ; 0                   ; 0                   ; 1                   ;
+; mac_state.mac_store ; 1                   ; 0                  ; 0                  ; 0                   ; 0                   ; 1                   ;
++---------------------+---------------------+--------------------+--------------------+---------------------+---------------------+---------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |cecil_dp_asp|dpasp_state                                                                                                                                                                                         ;
++-------------------------+-------------------------+-------------------------+------------------------+-----------------+-----------------------+----------------------+--------------------+------------------+-------------------+
+; Name                    ; dpasp_state.Correlation ; dpasp_state.Convolution ; dpasp_state.PeakDetect ; dpasp_state.FIR ; dpasp_state.MovingAvg ; dpasp_state.StoreMem ; dpasp_state.Direct ; dpasp_state.Idle ; dpasp_state.Reset ;
++-------------------------+-------------------------+-------------------------+------------------------+-----------------+-----------------------+----------------------+--------------------+------------------+-------------------+
+; dpasp_state.Reset       ; 0                       ; 0                       ; 0                      ; 0               ; 0                     ; 0                    ; 0                  ; 0                ; 0                 ;
+; dpasp_state.Idle        ; 0                       ; 0                       ; 0                      ; 0               ; 0                     ; 0                    ; 0                  ; 1                ; 1                 ;
+; dpasp_state.Direct      ; 0                       ; 0                       ; 0                      ; 0               ; 0                     ; 0                    ; 1                  ; 0                ; 1                 ;
+; dpasp_state.StoreMem    ; 0                       ; 0                       ; 0                      ; 0               ; 0                     ; 1                    ; 0                  ; 0                ; 1                 ;
+; dpasp_state.MovingAvg   ; 0                       ; 0                       ; 0                      ; 0               ; 1                     ; 0                    ; 0                  ; 0                ; 1                 ;
+; dpasp_state.FIR         ; 0                       ; 0                       ; 0                      ; 1               ; 0                     ; 0                    ; 0                  ; 0                ; 1                 ;
+; dpasp_state.PeakDetect  ; 0                       ; 0                       ; 1                      ; 0               ; 0                     ; 0                    ; 0                  ; 0                ; 1                 ;
+; dpasp_state.Convolution ; 0                       ; 1                       ; 0                      ; 0               ; 0                     ; 0                    ; 0                  ; 0                ; 1                 ;
+; dpasp_state.Correlation ; 1                       ; 0                       ; 0                      ; 0               ; 0                     ; 0                    ; 0                  ; 0                ; 1                 ;
++-------------------------+-------------------------+-------------------------+------------------------+-----------------+-----------------------+----------------------+--------------------+------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |cecil_dp_asp|\fsm:dpasp_next_state                                                                                                                                                                                                                                                                                   ;
++-----------------------------------+-----------------------------------+-----------------------------------+----------------------------------+---------------------------+---------------------------------+--------------------------------+------------------------------+----------------------------+-----------------------------+
+; Name                              ; \fsm:dpasp_next_state.Correlation ; \fsm:dpasp_next_state.Convolution ; \fsm:dpasp_next_state.PeakDetect ; \fsm:dpasp_next_state.FIR ; \fsm:dpasp_next_state.MovingAvg ; \fsm:dpasp_next_state.StoreMem ; \fsm:dpasp_next_state.Direct ; \fsm:dpasp_next_state.Idle ; \fsm:dpasp_next_state.Reset ;
++-----------------------------------+-----------------------------------+-----------------------------------+----------------------------------+---------------------------+---------------------------------+--------------------------------+------------------------------+----------------------------+-----------------------------+
+; \fsm:dpasp_next_state.Reset       ; 0                                 ; 0                                 ; 0                                ; 0                         ; 0                               ; 0                              ; 0                            ; 0                          ; 0                           ;
+; \fsm:dpasp_next_state.Idle        ; 0                                 ; 0                                 ; 0                                ; 0                         ; 0                               ; 0                              ; 0                            ; 1                          ; 1                           ;
+; \fsm:dpasp_next_state.Direct      ; 0                                 ; 0                                 ; 0                                ; 0                         ; 0                               ; 0                              ; 1                            ; 0                          ; 1                           ;
+; \fsm:dpasp_next_state.StoreMem    ; 0                                 ; 0                                 ; 0                                ; 0                         ; 0                               ; 1                              ; 0                            ; 0                          ; 1                           ;
+; \fsm:dpasp_next_state.MovingAvg   ; 0                                 ; 0                                 ; 0                                ; 0                         ; 1                               ; 0                              ; 0                            ; 0                          ; 1                           ;
+; \fsm:dpasp_next_state.FIR         ; 0                                 ; 0                                 ; 0                                ; 1                         ; 0                               ; 0                              ; 0                            ; 0                          ; 1                           ;
+; \fsm:dpasp_next_state.PeakDetect  ; 0                                 ; 0                                 ; 1                                ; 0                         ; 0                               ; 0                              ; 0                            ; 0                          ; 1                           ;
+; \fsm:dpasp_next_state.Convolution ; 0                                 ; 1                                 ; 0                                ; 0                         ; 0                               ; 0                              ; 0                            ; 0                          ; 1                           ;
+; \fsm:dpasp_next_state.Correlation ; 1                                 ; 0                                 ; 0                                ; 0                         ; 0                               ; 0                              ; 0                            ; 0                          ; 1                           ;
++-----------------------------------+-----------------------------------+-----------------------------------+----------------------------------+---------------------------+---------------------------------+--------------------------------+------------------------------+----------------------------+-----------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++----------------------------------------+----------------------------------------------------+
+; Register name                          ; Reason for Removal                                 ;
++----------------------------------------+----------------------------------------------------+
+; ledr[0]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[1]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[2]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[3]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[4]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[5]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[6]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[7]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[8]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; ledr[9]~reg0                           ; Stuck at GND due to stuck port data_in             ;
+; send.addr[5]~reg0                      ; Merged with send.addr[4]~reg0                      ;
+; send.addr[6]~reg0                      ; Merged with send.addr[4]~reg0                      ;
+; send.addr[7]~reg0                      ; Merged with send.addr[4]~reg0                      ;
+; sm_start_addr[1,2]                     ; Merged with sm_start_addr[0]                       ;
+; mac:mac1|dataout[0]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[0]  ;
+; mac:mac1|dataout[1]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[1]  ;
+; mac:mac1|dataout[2]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[2]  ;
+; mac:mac1|dataout[3]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[3]  ;
+; mac:mac1|dataout[4]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[4]  ;
+; mac:mac1|dataout[5]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[5]  ;
+; mac:mac1|dataout[6]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[6]  ;
+; mac:mac1|dataout[7]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[7]  ;
+; mac:mac1|dataout[8]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[8]  ;
+; mac:mac1|dataout[9]                    ; Merged with mac:mac1|\accumulate:dataout_int_V[9]  ;
+; mac:mac1|dataout[10]                   ; Merged with mac:mac1|\accumulate:dataout_int_V[10] ;
+; mac:mac1|dataout[11]                   ; Merged with mac:mac1|\accumulate:dataout_int_V[11] ;
+; mac:mac1|dataout[12]                   ; Merged with mac:mac1|\accumulate:dataout_int_V[12] ;
+; mac:mac1|dataout[13]                   ; Merged with mac:mac1|\accumulate:dataout_int_V[13] ;
+; mac:mac1|dataout[14]                   ; Merged with mac:mac1|\accumulate:dataout_int_V[14] ;
+; mac:mac1|dataout[15]                   ; Merged with mac:mac1|\accumulate:dataout_int_V[15] ;
+; sm_start_addr[0]                       ; Stuck at GND due to stuck port data_in             ;
+; send.addr[4]~reg0                      ; Stuck at GND due to stuck port data_in             ;
+; Total Number of Removed Registers = 33 ;                                                    ;
++----------------------------------------+----------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                           ;
++------------------+---------------------------+----------------------------------------+
+; Register name    ; Reason for Removal        ; Registers Removed due to This Register ;
++------------------+---------------------------+----------------------------------------+
+; sm_start_addr[0] ; Stuck at GND              ; send.addr[4]~reg0                      ;
+;                  ; due to stuck port data_in ;                                        ;
++------------------+---------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 324   ;
+; Number of registers using Synchronous Clear  ; 162   ;
+; Number of registers using Synchronous Load   ; 66    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 272   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                            ;
++---------------------------------------------+------------------------------------+------+
+; Register Name                               ; Megafunction                       ; Type ;
++---------------------------------------------+------------------------------------+------+
+; sync_ram:\mem_gen:1:memX|read_address[0..8] ; sync_ram:\mem_gen:1:memX|ram_rtl_0 ; RAM  ;
+; sync_ram:\mem_gen:0:memX|read_address[0..8] ; sync_ram:\mem_gen:0:memX|ram_rtl_0 ; RAM  ;
++---------------------------------------------+------------------------------------+------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |cecil_dp_asp|mac_num_samples[7]                    ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |cecil_dp_asp|mac:mac1|\accumulate:dataout_int_V[0] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |cecil_dp_asp|mac_num_samples[0]                    ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |cecil_dp_asp|\fsm:mac_i[28]                        ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 0 LEs                ; 96 LEs                 ; Yes        ; |cecil_dp_asp|\fsm:mac_m[22]                        ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |cecil_dp_asp|datain_array[0][1]                    ;
+; 17:1               ; 4 bits    ; 44 LEs        ; 0 LEs                ; 44 LEs                 ; Yes        ; |cecil_dp_asp|next_dest[3]                          ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |cecil_dp_asp|address_array[1][8]                   ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |cecil_dp_asp|address_array[0][0]                   ;
+; 8:1                ; 25 bits   ; 125 LEs       ; 50 LEs               ; 75 LEs                 ; Yes        ; |cecil_dp_asp|send.data[9]~reg0                     ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |cecil_dp_asp|send.addr[1]~reg0                     ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |cecil_dp_asp|send.data[26]~reg0                    ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 8 LEs                ; 6 LEs                  ; Yes        ; |cecil_dp_asp|send.data[30]~reg0                    ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |cecil_dp_asp|mac_state                             ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |cecil_dp_asp|mac_i                                 ;
+; 4:1                ; 31 bits   ; 62 LEs        ; 62 LEs               ; 0 LEs                  ; No         ; |cecil_dp_asp|mac_j                                 ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |cecil_dp_asp|Selector7                             ;
+; 18:1               ; 5 bits    ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; No         ; |cecil_dp_asp|dpasp_next_state                      ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; No         ; |cecil_dp_asp|dpasp_next_state                      ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; No         ; |cecil_dp_asp|dpasp_next_state                      ;
+; 7:1                ; 9 bits    ; 36 LEs        ; 27 LEs               ; 9 LEs                  ; No         ; |cecil_dp_asp|Selector260                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Source assignments for sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0|altsyncram_qla1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------+
+; Assignment                      ; Value              ; From ; To                                    ;
++---------------------------------+--------------------+------+---------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                     ;
++---------------------------------+--------------------+------+---------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Source assignments for sync_ram:\mem_gen:0:memX|altsyncram:ram_rtl_0|altsyncram_qla1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------+
+; Assignment                      ; Value              ; From ; To                                    ;
++---------------------------------+--------------------+------+---------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                     ;
++---------------------------------+--------------------+------+---------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |cecil_dp_asp ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; mem_banks      ; 2     ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0 ;
++------------------------------------+----------------------+------------------------------------+
+; Parameter Name                     ; Value                ; Type                               ;
++------------------------------------+----------------------+------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                            ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                         ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                       ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                       ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                     ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                            ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                            ;
+; WIDTH_A                            ; 16                   ; Untyped                            ;
+; WIDTHAD_A                          ; 9                    ; Untyped                            ;
+; NUMWORDS_A                         ; 512                  ; Untyped                            ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                            ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                            ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                            ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                            ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                            ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                            ;
+; WIDTH_B                            ; 1                    ; Untyped                            ;
+; WIDTHAD_B                          ; 1                    ; Untyped                            ;
+; NUMWORDS_B                         ; 1                    ; Untyped                            ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                            ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                            ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                            ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                            ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                            ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                            ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                            ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                            ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                            ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                            ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                            ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                            ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                            ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                            ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                            ;
+; BYTE_SIZE                          ; 8                    ; Untyped                            ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                            ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                            ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                            ;
+; INIT_FILE                          ; UNUSED               ; Untyped                            ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                            ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                            ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                            ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                            ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                            ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                            ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                            ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                            ;
+; CBXI_PARAMETER                     ; altsyncram_qla1      ; Untyped                            ;
++------------------------------------+----------------------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: sync_ram:\mem_gen:0:memX|altsyncram:ram_rtl_0 ;
++------------------------------------+----------------------+------------------------------------+
+; Parameter Name                     ; Value                ; Type                               ;
++------------------------------------+----------------------+------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                            ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                         ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                       ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                       ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                     ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                            ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                            ;
+; WIDTH_A                            ; 16                   ; Untyped                            ;
+; WIDTHAD_A                          ; 9                    ; Untyped                            ;
+; NUMWORDS_A                         ; 512                  ; Untyped                            ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                            ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                            ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                            ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                            ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                            ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                            ;
+; WIDTH_B                            ; 1                    ; Untyped                            ;
+; WIDTHAD_B                          ; 1                    ; Untyped                            ;
+; NUMWORDS_B                         ; 1                    ; Untyped                            ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                            ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                            ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                            ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                            ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                            ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                            ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                            ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                            ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                            ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                            ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                            ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                            ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                            ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                            ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                            ;
+; BYTE_SIZE                          ; 8                    ; Untyped                            ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                            ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                            ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                            ;
+; INIT_FILE                          ; UNUSED               ; Untyped                            ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                            ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                            ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                            ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                            ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                            ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                            ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                            ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                            ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                            ;
+; CBXI_PARAMETER                     ; altsyncram_qla1      ; Untyped                            ;
++------------------------------------+----------------------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                          ;
++-------------------------------------------+-----------------------------------------------+
+; Name                                      ; Value                                         ;
++-------------------------------------------+-----------------------------------------------+
+; Number of entity instances                ; 2                                             ;
+; Entity Instance                           ; sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0 ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                   ;
+;     -- WIDTH_A                            ; 16                                            ;
+;     -- NUMWORDS_A                         ; 512                                           ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                  ;
+;     -- WIDTH_B                            ; 1                                             ;
+;     -- NUMWORDS_B                         ; 1                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                     ;
+; Entity Instance                           ; sync_ram:\mem_gen:0:memX|altsyncram:ram_rtl_0 ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                   ;
+;     -- WIDTH_A                            ; 16                                            ;
+;     -- NUMWORDS_A                         ; 512                                           ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                  ;
+;     -- WIDTH_B                            ; 1                                             ;
+;     -- NUMWORDS_B                         ; 1                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                     ;
++-------------------------------------------+-----------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mac:mac1"                                                                                      ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; dataout[31..16] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 324                         ;
+;     ENA               ; 76                          ;
+;     ENA SCLR          ; 130                         ;
+;     ENA SCLR SLD      ; 32                          ;
+;     ENA SLD           ; 34                          ;
+;     plain             ; 52                          ;
+; arriav_lcell_comb     ; 815                         ;
+;     arith             ; 220                         ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 146                         ;
+;         2 data inputs ; 30                          ;
+;         4 data inputs ; 41                          ;
+;     extend            ; 44                          ;
+;         7 data inputs ; 44                          ;
+;     normal            ; 453                         ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 22                          ;
+;         3 data inputs ; 103                         ;
+;         4 data inputs ; 67                          ;
+;         5 data inputs ; 40                          ;
+;         6 data inputs ; 220                         ;
+;     shared            ; 98                          ;
+;         0 data inputs ; 2                           ;
+;         2 data inputs ; 32                          ;
+;         3 data inputs ; 64                          ;
+; arriav_mac            ; 1                           ;
+; boundary_port         ; 91                          ;
+; stratixv_ram_block    ; 32                          ;
+;                       ;                             ;
+; Max LUT depth         ; 13.90                       ;
+; Average LUT depth     ; 7.63                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Sun Jun 13 19:01:57 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cs701_irp -c cs701_irp
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 0 entities, in source file tdmamintypes.vhd
+    Info (12022): Found design unit 1: TdmaMinTypes File: C:/Users/symes/University/CS701_IRP/TdmaMinTypes.vhd Line: 5
+    Info (12022): Found design unit 2: TdmaMinTypes-body File: C:/Users/symes/University/CS701_IRP/TdmaMinTypes.vhd Line: 24
+Info (12021): Found 2 design units, including 1 entities, in source file sync_ram_testbench.vhd
+    Info (12022): Found design unit 1: sync_ram_testbench-behaviour File: C:/Users/symes/University/CS701_IRP/sync_ram_testbench.vhd Line: 10
+    Info (12023): Found entity 1: sync_ram_testbench File: C:/Users/symes/University/CS701_IRP/sync_ram_testbench.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file sync_ram.vhd
+    Info (12022): Found design unit 1: sync_ram-RTL File: C:/Users/symes/University/CS701_IRP/sync_ram.vhd Line: 22
+    Info (12023): Found entity 1: sync_ram File: C:/Users/symes/University/CS701_IRP/sync_ram.vhd Line: 12
+Info (12021): Found 2 design units, including 1 entities, in source file peak_detect_testbench.vhd
+    Info (12022): Found design unit 1: peak_detect_testbench-behaviour File: C:/Users/symes/University/CS701_IRP/peak_detect_testbench.vhd Line: 10
+    Info (12023): Found entity 1: peak_detect_testbench File: C:/Users/symes/University/CS701_IRP/peak_detect_testbench.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file peak_detect.vhd
+    Info (12022): Found design unit 1: peak_detect-behaviour File: C:/Users/symes/University/CS701_IRP/peak_detect.vhd Line: 20
+    Info (12023): Found entity 1: peak_detect File: C:/Users/symes/University/CS701_IRP/peak_detect.vhd Line: 12
+Info (12021): Found 2 design units, including 1 entities, in source file mac_testbench.vhd
+    Info (12022): Found design unit 1: mac_testbench-behaviour File: C:/Users/symes/University/CS701_IRP/mac_testbench.vhd Line: 10
+    Info (12023): Found entity 1: mac_testbench File: C:/Users/symes/University/CS701_IRP/mac_testbench.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file mac.vhd
+    Info (12022): Found design unit 1: mac-behaviour File: C:/Users/symes/University/CS701_IRP/mac.vhd Line: 23
+    Info (12023): Found entity 1: mac File: C:/Users/symes/University/CS701_IRP/mac.vhd Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file conv_unit_testbench.vhd
+    Info (12022): Found design unit 1: conv_unit_testbench-behaviour File: C:/Users/symes/University/CS701_IRP/conv_unit_testbench.vhd Line: 9
+    Info (12023): Found entity 1: conv_unit_testbench File: C:/Users/symes/University/CS701_IRP/conv_unit_testbench.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file conv_unit.vhd
+    Info (12022): Found design unit 1: conv_unit-behaviour File: C:/Users/symes/University/CS701_IRP/conv_unit.vhd Line: 15
+    Info (12023): Found entity 1: conv_unit File: C:/Users/symes/University/CS701_IRP/conv_unit.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file cecil_dp_asp_testbench.vhd
+    Info (12022): Found design unit 1: cecil_dp_asp_testbench-behaviour File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp_testbench.vhd Line: 12
+    Info (12023): Found entity 1: cecil_dp_asp_testbench File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp_testbench.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file cecil_dp_asp.vhd
+    Info (12022): Found design unit 1: cecil_dp_asp-behaviour File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 35
+    Info (12023): Found entity 1: cecil_dp_asp File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 23
+Info (12127): Elaborating entity "cecil_dp_asp" for the top level hierarchy
+Warning (10540): VHDL Signal Declaration warning at cecil_dp_asp.vhd(102): used explicit default value for signal "to_shift" because signal was never assigned a value File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 102
+Warning (10036): Verilog HDL or VHDL warning at cecil_dp_asp.vhd(106): object "output" assigned a value but never read File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 106
+Warning (10036): Verilog HDL or VHDL warning at cecil_dp_asp.vhd(109): object "test_mac_i" assigned a value but never read File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 109
+Warning (10036): Verilog HDL or VHDL warning at cecil_dp_asp.vhd(110): object "test_mac_j" assigned a value but never read File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 110
+Warning (10036): Verilog HDL or VHDL warning at cecil_dp_asp.vhd(111): object "test_mac_m" assigned a value but never read File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 111
+Warning (10542): VHDL Variable Declaration warning at cecil_dp_asp.vhd(158): used initial value expression for variable "mac_store_addr" because variable was never assigned a value File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 158
+Info (12128): Elaborating entity "sync_ram" for hierarchy "sync_ram:\mem_gen:0:memX" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 118
+Info (12128): Elaborating entity "mac" for hierarchy "mac:mac1" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 129
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "sync_ram:\mem_gen:1:memX|ram_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to SINGLE_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 9
+        Info (286033): Parameter NUMWORDS_A set to 512
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_A set to NONE
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "sync_ram:\mem_gen:0:memX|ram_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to SINGLE_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 9
+        Info (286033): Parameter NUMWORDS_A set to 512
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_A set to NONE
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+Info (12130): Elaborated megafunction instantiation "sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0"
+Info (12133): Instantiated megafunction "sync_ram:\mem_gen:1:memX|altsyncram:ram_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "SINGLE_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "9"
+    Info (12134): Parameter "NUMWORDS_A" = "512"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_qla1.tdf
+    Info (12023): Found entity 1: altsyncram_qla1 File: C:/Users/symes/University/CS701_IRP/db/altsyncram_qla1.tdf Line: 27
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "ledr[0]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[1]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[2]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[3]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[4]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[5]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[6]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[7]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[8]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "ledr[9]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 162
+    Warning (13410): Pin "send.addr[4]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 30
+    Warning (13410): Pin "send.addr[5]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 30
+    Warning (13410): Pin "send.addr[6]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 30
+    Warning (13410): Pin "send.addr[7]" is stuck at GND File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 30
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 8 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "recv.addr[0]" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 31
+    Warning (15610): No output dependent on input pin "recv.addr[1]" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 31
+    Warning (15610): No output dependent on input pin "recv.addr[2]" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 31
+    Warning (15610): No output dependent on input pin "recv.addr[3]" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 31
+    Warning (15610): No output dependent on input pin "recv.addr[4]" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 31
+    Warning (15610): No output dependent on input pin "recv.addr[5]" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 31
+    Warning (15610): No output dependent on input pin "recv.addr[6]" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 31
+    Warning (15610): No output dependent on input pin "recv.addr[7]" File: C:/Users/symes/University/CS701_IRP/cecil_dp_asp.vhd Line: 31
+Info (21057): Implemented 1045 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 41 input pins
+    Info (21059): Implemented 50 output pins
+    Info (21061): Implemented 921 logic cells
+    Info (21064): Implemented 32 RAM segments
+    Info (21062): Implemented 1 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 31 warnings
+    Info: Peak virtual memory: 4884 megabytes
+    Info: Processing ended: Sun Jun 13 19:02:09 2021
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:22
+
+

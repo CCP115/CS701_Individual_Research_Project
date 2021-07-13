@@ -1,0 +1,89 @@
+-- Data Processing Application Specific Processor
+-- Written by Cecil Symes
+
+-- Able to do the following functions:
+-- Direct Passthrough, Moving Average Filter, FIR Filter, Correlation
+
+-- Modes correspond to:
+-- "0000" => Direct Passthrough
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.Numeric_Std.all;
+use work.TdmaMinTypes.all;
+
+entity cecil_dp_asp is
+	port (
+		clk				: in  std_logic;
+		
+		test_out		: out std_logic := '0';
+		
+		send			: out tdma_min_port;
+		recv			: in tdma_min_port
+	);
+end entity cecil_dp_asp;
+
+architecture behaviour of cecil_dp_asp is
+
+
+	-- FSM declarations
+	type state_type is (Direct, MovingAvg, FIR, Correlation);
+	signal state		: state_type := Direct;
+	signal next_state	: state_type := Direct;
+	
+	
+	-- Component declarations
+	component peak_detect is
+		port (
+		clk					: in  std_logic;
+		data				: in  std_logic_vector(15 downto 0);
+		peak_detected		: out  std_logic := '0'
+		);
+	end component peak_detect;
+	
+	component mac is
+		port (
+		clk					: in  std_logic;
+		data1				: in  std_logic_vector(15 downto 0);
+		data2				: in  std_logic_vector(15 downto 0);
+		dataout				: out std_logic_vector(31 downto 0)
+		);
+	end component mac;
+	
+	-- Internal signal declarations
+	
+begin
+	
+--	control_unit : process(clk)
+--	begin
+--		if rising_edge(clk) then
+--			-- Received data is a configuration packet
+--			if recv.data(31 downto 28) = "1001" then
+--				-- Set destination port
+--				send.addr <= recv.data(23 downto 20);
+--				
+--				-- Choose mode
+--				case recv.data(31 downto 28) is
+--				when "0000" =>
+--					state <= Direct;
+--					
+--				when others =>
+--					-- Do nothing
+--				end case;
+--			end if;
+--		end if;
+--	end process control_unit;
+	
+	fsm : process(clk)
+	begin
+		if rising_edge(clk) then
+		
+			if recv.data(31 downto 28) = "1000" then
+				send.data <= recv.data;
+				send.addr <= x"01";
+			end if;
+		
+		end if;
+	end process fsm;
+	
+end architecture behaviour;

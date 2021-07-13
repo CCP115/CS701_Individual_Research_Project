@@ -1,0 +1,101 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'clk'
+Slack : -15.410
+TNS   : -3816.479
+
+Type  : Slow 1100mV 85C Model Setup 'mac_en'
+Slack : -9.650
+TNS   : -456.442
+
+Type  : Slow 1100mV 85C Model Hold 'clk'
+Slack : 0.238
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'mac_en'
+Slack : 0.858
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.545
+TNS   : -771.890
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'mac_en'
+Slack : -3.545
+TNS   : -149.394
+
+Type  : Slow 1100mV 0C Model Setup 'clk'
+Slack : -15.417
+TNS   : -3811.227
+
+Type  : Slow 1100mV 0C Model Setup 'mac_en'
+Slack : -10.242
+TNS   : -478.207
+
+Type  : Slow 1100mV 0C Model Hold 'clk'
+Slack : -0.365
+TNS   : -4.056
+
+Type  : Slow 1100mV 0C Model Hold 'mac_en'
+Slack : 0.794
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.545
+TNS   : -774.608
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'mac_en'
+Slack : -3.545
+TNS   : -149.351
+
+Type  : Fast 1100mV 85C Model Setup 'clk'
+Slack : -6.468
+TNS   : -1476.174
+
+Type  : Fast 1100mV 85C Model Setup 'mac_en'
+Slack : -3.475
+TNS   : -157.633
+
+Type  : Fast 1100mV 85C Model Hold 'clk'
+Slack : -0.089
+TNS   : -0.271
+
+Type  : Fast 1100mV 85C Model Hold 'mac_en'
+Slack : 0.322
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk'
+Slack : -2.174
+TNS   : -257.264
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'mac_en'
+Slack : -1.702
+TNS   : -62.974
+
+Type  : Fast 1100mV 0C Model Setup 'clk'
+Slack : -5.720
+TNS   : -1307.857
+
+Type  : Fast 1100mV 0C Model Setup 'mac_en'
+Slack : -3.399
+TNS   : -153.120
+
+Type  : Fast 1100mV 0C Model Hold 'clk'
+Slack : -0.334
+TNS   : -4.973
+
+Type  : Fast 1100mV 0C Model Hold 'mac_en'
+Slack : 0.296
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk'
+Slack : -2.174
+TNS   : -257.643
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'mac_en'
+Slack : -1.702
+TNS   : -62.974
+
+------------------------------------------------------------

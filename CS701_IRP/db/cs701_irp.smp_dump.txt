@@ -1,0 +1,33 @@
+
+State Machine - |cecil_dp_asp|mac_state
+Name mac_state.mac_store mac_state.mac_calc mac_state.mac_wait mac_state.mac_fetch mac_state.mac_reset mac_state.mac_ready 
+mac_state.mac_ready 0 0 0 0 0 0 
+mac_state.mac_reset 0 0 0 0 1 1 
+mac_state.mac_fetch 0 0 0 1 0 1 
+mac_state.mac_wait 0 0 1 0 0 1 
+mac_state.mac_calc 0 1 0 0 0 1 
+mac_state.mac_store 1 0 0 0 0 1 
+
+State Machine - |cecil_dp_asp|dpasp_state
+Name dpasp_state.Correlation dpasp_state.Convolution dpasp_state.PeakDetect dpasp_state.FIR dpasp_state.MovingAvg dpasp_state.StoreMem dpasp_state.Direct dpasp_state.Idle dpasp_state.Reset 
+dpasp_state.Reset 0 0 0 0 0 0 0 0 0 
+dpasp_state.Idle 0 0 0 0 0 0 0 1 1 
+dpasp_state.Direct 0 0 0 0 0 0 1 0 1 
+dpasp_state.StoreMem 0 0 0 0 0 1 0 0 1 
+dpasp_state.MovingAvg 0 0 0 0 1 0 0 0 1 
+dpasp_state.FIR 0 0 0 1 0 0 0 0 1 
+dpasp_state.PeakDetect 0 0 1 0 0 0 0 0 1 
+dpasp_state.Convolution 0 1 0 0 0 0 0 0 1 
+dpasp_state.Correlation 1 0 0 0 0 0 0 0 1 
+
+State Machine - |cecil_dp_asp|\fsm:dpasp_next_state
+Name \fsm:dpasp_next_state.Correlation \fsm:dpasp_next_state.Convolution \fsm:dpasp_next_state.PeakDetect \fsm:dpasp_next_state.FIR \fsm:dpasp_next_state.MovingAvg \fsm:dpasp_next_state.StoreMem \fsm:dpasp_next_state.Direct \fsm:dpasp_next_state.Idle \fsm:dpasp_next_state.Reset 
+\fsm:dpasp_next_state.Reset 0 0 0 0 0 0 0 0 0 
+\fsm:dpasp_next_state.Idle 0 0 0 0 0 0 0 1 1 
+\fsm:dpasp_next_state.Direct 0 0 0 0 0 0 1 0 1 
+\fsm:dpasp_next_state.StoreMem 0 0 0 0 0 1 0 0 1 
+\fsm:dpasp_next_state.MovingAvg 0 0 0 0 1 0 0 0 1 
+\fsm:dpasp_next_state.FIR 0 0 0 1 0 0 0 0 1 
+\fsm:dpasp_next_state.PeakDetect 0 0 1 0 0 0 0 0 1 
+\fsm:dpasp_next_state.Convolution 0 1 0 0 0 0 0 0 1 
+\fsm:dpasp_next_state.Correlation 1 0 0 0 0 0 0 0 1 
